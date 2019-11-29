@@ -36,8 +36,8 @@ class Redis{
 	 * 连接
 	 */
 	public function connect(){
-		$this->connect = $this->redis->connect($this->config['host'], $this->config['port']);
-		$this->connect->auth($this->config['password']);
+		$this->redis->connect($this->config['host'], $this->config['port']);
+		$this->redis->auth($this->config['password']);
 	}
 	/**
 	 * 选择库
