@@ -37,13 +37,19 @@ class Index{
 		$redis = \package\Redis::instance();
 		$redis->zadd($this->zsetKey);
 		$count = $redis->zcard($this->zsetKey);
+		$data = [
+			'page' => $page,
+			'size' => $size,
+			'max_page' => ceil($count/$size),
+			'list' => [],
+		];
 		if (ceil($count/$size) < $page) {
 			json($data);
 		}
 		// 分数倒序
 		$list = $redis->zrevrangebyscore($this->zsetKey,($page-1)*$size,$page*$size-1);
 		foreach ($list as $k => $v) {
-			$data[] = $redis->hMGet($this->hashKey.':'.$v);
+			$data['list'][] = $redis->hMGet($this->hashKey.':'.$v);
 		}
 		json($data);
 	}
