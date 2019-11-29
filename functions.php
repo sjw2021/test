@@ -24,9 +24,21 @@ if (!function_exists('config')) {
 		return $config;
 	}
 }
+// 返回json数据
 if (!function_exists('json')) {
-	function json($data = array()){
+	function json($list = array(),$msg= ''){
+		$data = [
+			'code' => 0,
+			'msg' => $msg,
+			'data' => $list
+		];
 		echo json_encode($data,JSON_UNESCAPED_UNICODE);
 		die();
+	}
+}
+// 返回json错误数据
+if (!function_exists('json_error')) {
+	function json_error($msg= '',$list=array()){
+		json($list,$msg);
 	}
 }

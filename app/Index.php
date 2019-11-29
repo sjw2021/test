@@ -73,7 +73,7 @@ class Index{
 		$params['Ndate'] = null;
 		// 数据记录进redis
 		$redis = \package\Redis::instance();
-		$redis->zadd($this->zsetKey,$value,$score);
+		$redis->zadd($this->zsetKey,$lastId,$lastId);
 		$redis->hMSet($this->hashKey,$params);
 		json();
 	}

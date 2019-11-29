@@ -8,5 +8,5 @@ new Autoload();
 try {
 	new \app\Index();
 } catch (\Exception $e) {
-	var_dump($e->getMessage());
+	json_error($e->getMessage());
 }
