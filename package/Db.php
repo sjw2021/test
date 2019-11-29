@@ -67,6 +67,17 @@ class Db{
 		}
 	}
 	/**
+	 * 插入并获取插入的id
+	 */
+	public function insertGetLastId($sql){
+		$this->execute($sql);
+		$data = $this->query('select last_insert_id()');
+		if ($data) {
+			return current($data);
+		}
+		return null;
+	}
+	/**
 	 * 数据库连接释放
 	 */
 	public function close(){

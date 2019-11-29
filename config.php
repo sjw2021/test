@@ -4,16 +4,16 @@
  */
 return [
 	'database' => [
-		'host' => '127.0.0.1',
+		'host' => '172.17.24.78',
 		'port' => 3306,
-		'user' => 'root',
-		'password' => '123456',
+		'user' => 'huaxuezoo_dba',
+		'password' => 'W2wh123#',
 		'database' => 'test',
 	],
 	'redis' => [
-		'host' => 'localhost',
+		'host' => '172.17.24.78',
 		'port' => 6379,
-		'password' => '',
+		'password' => 'COACHcoach1234',
 		'database' => 1,
 	]
 ];

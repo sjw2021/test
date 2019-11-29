@@ -21,6 +21,7 @@ class Redis{
 		$this->config = array_merge($this->config,config('redis'),$config);
 		$this->redis = new \Redis();
 		$this->connect();
+		$this->select();
 	}
 	/**
 	 * 实例
@@ -36,6 +37,12 @@ class Redis{
 	 */
 	public function connect(){
 		$this->connect = $this->redis->connect($this->config['host'], $this->config['port']);
+	}
+	/**
+	 * 选择库
+	 */
+	public function select(){
+		$this->redis->select($this->config['database']);
 	}
 	/**
 	 * 获取redis实例

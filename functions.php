@@ -1,7 +1,7 @@
 <?php 
 if (!function_exists('config')) {
 	function config($params = ''){
-		$config = require_once ROOT_PATH.'/config.php';
+		$config = require ROOT_PATH.'/config.php';
 		if (!$config) {
 			return null;
 		}
@@ -22,5 +22,11 @@ if (!function_exists('config')) {
 			return $config[$params];
 		}
 		return $config;
+	}
+}
+if (!function_exists('json')) {
+	function json($data = array()){
+		echo json_encode($data,JSON_UNESCAPED_UNICODE);
+		die();
 	}
 }
