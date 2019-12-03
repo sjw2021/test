@@ -6,14 +6,14 @@ return [
 	'database' => [
 		'host' => 'localhost',
 		'port' => 3306,
-		'user' => 'root',
-		'password' => '123456',
+		'user' => 'www.jjwxc.net',
+		'password' => 'www.jjwxc.net',
 		'database' => 'test',
 	],
 	'redis' => [
 		'host' => 'localhost',
 		'port' => 6379,
-		'password' => '',
+		'password' => 'www.jjwxc.net',
 		'database' => 15,
 	]
 ];

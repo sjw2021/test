@@ -13,7 +13,6 @@
 
  Date: 12/03/2019 17:24:52 PM
 */
-CREATE DATABASE IF NOT EXISTS test;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -22,7 +21,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 --  Table structure for `board`
 -- ----------------------------
 DROP TABLE IF EXISTS `board`;
-CREATE TABLE IF NOT EXISTS `board` (
+CREATE TABLE `board` (
   `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主贴ID',
   `subject` varchar(100) NOT NULL DEFAULT '' COMMENT '标题',
   `Author` varchar(20) NOT NULL DEFAULT '' COMMENT '发帖人',

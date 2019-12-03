@@ -60,7 +60,7 @@ class Db{
 		$arr = explode(';', $content);
 		foreach ($arr as $k => $v) {
 			$sql = trim($v);
-			if (empty($sql) || strpos($sql, '--') === 0) {
+			if (empty($sql)) {
 				continue;
 			}
 			$this->query($sql);
@@ -72,6 +72,9 @@ class Db{
 	 */
 	public function query($sql){
 		$result = $this->connect->query($sql);
+		if ($result === true) {
+			return true;
+		}
 		$data = [];
 		if ($result->num_rows > 0) {
 			while ($row = $result->fetch_assoc()) {
