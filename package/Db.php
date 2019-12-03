@@ -71,9 +71,9 @@ class Db{
 	 */
 	public function insertGetLastId($sql){
 		$this->execute($sql);
-		$data = $this->query('select last_insert_id()');
+		$data = $this->query('select last_insert_id() as last_insert_id');
 		if ($data) {
-			return current($data);
+			return $data[0]['last_insert_id'];
 		}
 		return null;
 	}
