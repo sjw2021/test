@@ -76,7 +76,7 @@ class Index{
 		// 数据记录进redis
 		$redis = \package\Redis::instance();
 		$redis->zadd($this->zsetKey,$lastId,$lastId);
-		$redis->hMSet($this->hashKey,$params);
+		$redis->hMSet($this->hashKey.':'.$lastId,$params);
 		json();
 	}
 	/**

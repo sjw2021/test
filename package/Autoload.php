@@ -16,7 +16,6 @@ class Autoload{
 	 * 注册
 	 */
 	public static function register($class){
-		// var_dump($class);
 		$class = str_replace('\\', '/', $class);
 		if (substr($class, 0,1) === '/') {
 			$file = ROOT_PATH.$class.'.php';
