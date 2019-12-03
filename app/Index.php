@@ -77,7 +77,7 @@ class Index{
 		$redis = \package\Redis::instance();
 		$redis->zadd($this->zsetKey,$lastId,$lastId);
 		$redis->hMSet($this->hashKey.':'.$lastId,$params);
-		json_success();
+		json_success(['board_id'=>$lastId]);
 	}
 	/**
 	 * 重载
