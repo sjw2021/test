@@ -43,7 +43,7 @@ class Index{
 			json_success($data);
 		}
 		// 分数倒序
-		$list = $redis->zrevrangebyscore($this->zsetKey,($page-1)*$size,$page*$size-1);
+		$list = $redis->zrevrangebyscore($this->zsetKey,$page*$size-1,($page-1)*$size);
 		foreach ($list as $k => $v) {
 			$data['list'][] = $redis->hGetAll($this->hashKey.':'.$v);
 		}

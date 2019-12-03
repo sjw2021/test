@@ -97,7 +97,7 @@ class Redis{
 		if ($withScores === fasle) {
 			return $this->redis->zrevrangebyscore($key,$max,$min);
 		}
-		return $this->redis->zrevrangebyscore($key,$max,$min,$withScores);
+		return $this->redis->zrevrangebyscore($key,$max,$min,'WITHSCORES');
 	}
 	public function __call($method,$args){
 		return $this->redis->{$method}($args);
