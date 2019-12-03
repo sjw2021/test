@@ -16,10 +16,10 @@ class Index{
 		if (strpos($uri, '?') !== false) {
 			$uri = substr($uri, 0,strpos($uri, '?'));
 		}
-		$arr = explode('/', $uri);
-		if (count($arr) === 0) {
+		if (empty($uri)) {
 			return $this->index();
 		}
+		$arr = explode('/', $uri);
 		$this->{$arr[0]}();
 	}
 	/**
