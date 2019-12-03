@@ -94,7 +94,7 @@ class Redis{
 	 * 返回有序集中指定分数区间内的成员，分数从高到低排序
 	 */
 	public function zrevrangebyscore($key,$max,$min,$withScores = false){
-		if ($withScores === fasle) {
+		if ($withScores === false) {
 			return $this->redis->zrevrangebyscore($key,$max,$min);
 		}
 		return $this->redis->zrevrangebyscore($key,$max,$min,'WITHSCORES');
