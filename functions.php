@@ -26,19 +26,25 @@ if (!function_exists('config')) {
 }
 // 返回json数据
 if (!function_exists('json')) {
-	function json($list = array(),$msg= ''){
-		$data = [
-			'code' => 0,
+	function json($errCode=0,$msg= '',$data = array()){
+		$result = [
+			'err_code' => $errCode,
 			'msg' => $msg,
-			'data' => $list
+			'data' => $data
 		];
-		echo json_encode($data,JSON_UNESCAPED_UNICODE);
+		echo json_encode($result,JSON_UNESCAPED_UNICODE);
 		die();
+	}
+}
+// 返回json数据
+if (!function_exists('json_success')) {
+	function json_success($data = array(),$msg= ''){
+		return json(0,$msg,$data);
 	}
 }
 // 返回json错误数据
 if (!function_exists('json_error')) {
-	function json_error($msg= '',$list=array()){
-		json($list,$msg);
+	function json_error($errCode = 1,$msg= '',$data=array()){
+		return json($errCode,$msg,$data);
 	}
 }

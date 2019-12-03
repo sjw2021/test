@@ -40,14 +40,14 @@ class Index{
 			'list' => [],
 		];
 		if ($data['max_page'] < $page) {
-			json($data);
+			json_success($data);
 		}
 		// 分数倒序
 		$list = $redis->zrevrangebyscore($this->zsetKey,($page-1)*$size,$page*$size-1);
 		foreach ($list as $k => $v) {
 			$data['list'][] = $redis->hGetAll($this->hashKey.':'.$v);
 		}
-		json($data);
+		json_success($data);
 	}
 	/**
 	 * 发帖
@@ -77,7 +77,7 @@ class Index{
 		$redis = \package\Redis::instance();
 		$redis->zadd($this->zsetKey,$lastId,$lastId);
 		$redis->hMSet($this->hashKey.':'.$lastId,$params);
-		json();
+		json_success();
 	}
 	/**
 	 * 重载

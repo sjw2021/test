@@ -37,8 +37,10 @@ class Db{
 	 */
 	protected function connect(){
 		$pdoDsn = $this->config['host'].':'.$this->config['port'];
+		// PDO连接
 		// $pdoDsn = 'mysql:host='.$this->config['host'].';dbname='.$this->config['database'];
 		// $this->connect = new \PDO($pdoDsn,$this->config['user'],$this->config['password']);
+		// mysqli连接
 		$this->connect = new \mysqli($pdoDsn,$this->config['user'],$this->config['password'],$this->config['database']);
 		if ($this->connect->connect_error) {
 			throw new \Exception('数据库连接失败:'.$this->connect->connect_error);
