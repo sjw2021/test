@@ -69,36 +69,36 @@ class Redis{
 	/**
 	 * 
 	 */
-	// public function hSet($key,$field,$value){
-	// 	return $this->redis->hset($key,$field,$value);
-	// }
-	// /**
-	//  * 获取存储在哈希表中指定字段的值。
-	//  */
-	// public function hGetAll($key){
-	// 	return $this->redis->hgetall($key);
-	// }
-	// /**
-	//  * 向有序集合添加一个或多个成员，或者更新已存在成员的分数
-	//  */
-	// public function zadd($key,$score,$member){
-	// 	return $this->redis->zadd($key,$score,$member);
-	// }
-	// *
-	//  * 获取有序集合的成员数
-	 
-	// public function zcard($key){
-	// 	return $this->redis->zcard($key);
-	// }
-	// /**
-	//  * 返回有序集中指定分数区间内的成员，分数从高到低排序
-	//  */
-	// public function zrevrangebyscore($key,$max,$min,$withScores = false){
-	// 	if ($withScores === fasle) {
-	// 		return $this->redis->zrevrangebyscore($key,$max,$min);
-	// 	}
-	// 	return $this->redis->zrevrangebyscore($key,$max,$min,$withScores);
-	// }
+	public function hMSet($key,$params){
+		return $this->redis->hmset($key,$params);
+	}
+	/**
+	 * 获取存储在哈希表中指定字段的值。
+	 */
+	public function hGetAll($key){
+		return $this->redis->hgetall($key);
+	}
+	/**
+	 * 向有序集合添加一个或多个成员，或者更新已存在成员的分数
+	 */
+	public function zadd($key,$score,$member){
+		return $this->redis->zadd($key,$score,$member);
+	}
+	/*
+	 * 获取有序集合的成员数
+	 */
+	public function zcard($key){
+		return $this->redis->zcard($key);
+	}
+	/**
+	 * 返回有序集中指定分数区间内的成员，分数从高到低排序
+	 */
+	public function zrevrangebyscore($key,$max,$min,$withScores = false){
+		if ($withScores === fasle) {
+			return $this->redis->zrevrangebyscore($key,$max,$min);
+		}
+		return $this->redis->zrevrangebyscore($key,$max,$min,$withScores);
+	}
 	public function __call($method,$args){
 		return $this->redis->{$method}($args);
 	}
