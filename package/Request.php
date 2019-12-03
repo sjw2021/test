@@ -19,7 +19,11 @@ class Request{
 	 * 请求的uri
 	 */
 	public function uri(){
-		return strtolower($this->server['REQUEST_URI']);
+		$uri = strtolower($this->server['REQUEST_URI']);
+		if (strpos($uri, '/index.php') === 0) {
+			$uri = substr($uri, 0,10);
+		}
+		return ltrim($uri,'/');
 	}
 	/**
 	 * 获取get参数

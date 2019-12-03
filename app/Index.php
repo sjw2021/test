@@ -12,15 +12,15 @@ class Index{
 	protected $request;
 	public function __construct(){
 		$this->request = new \package\Request();
-		$uri = trim($this->request->uri(),'/index.php');
+		$uri = $this->request->uri();
 		if (strpos($uri, '?') !== false) {
 			$uri = substr($uri, 0,strpos($uri, '?'));
 		}
 		$arr = explode('/', $uri);
-		if (count($arr) <= 1) {
+		if (count($arr) === 0) {
 			return $this->index();
 		}
-		$this->{$arr[1]}();
+		$this->{$arr[0]}();
 	}
 	/**
 	 * 帖子列表
