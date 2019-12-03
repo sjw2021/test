@@ -38,7 +38,7 @@ if (!function_exists('json')) {
 }
 // 返回json数据
 if (!function_exists('json_success')) {
-	function json_success($data = array(),$msg= ''){
+	function json_success($data = array(),$msg= '请求成功'){
 		return json(0,$msg,$data);
 	}
 }
