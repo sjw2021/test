@@ -34,6 +34,7 @@ class Index{
 		$redis = \package\Redis::instance();
 		$count = $redis->zcard($this->zsetKey);
 		$data = [
+			'count' => $count,
 			'page' => $page,
 			'size' => $size,
 			'max_page' => ceil($count/$size),
