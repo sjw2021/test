@@ -48,6 +48,26 @@ class Db{
 		return $this->connect;
 	}
 	/**
+	 * 执行.sql文件内容
+	 */
+	public function executeSqlFile($content){
+		if (empty($content)) {
+			throw new \Exception("文件内容不能为空");
+		}
+		// 过滤掉注释内容/* */
+		$content = preg_replace('/\/\*.*\*\//is', '', $content);
+		// 根据分号分隔
+		$arr = explode(';', $content);
+		foreach ($arr as $k => $v) {
+			$sql = trim($v);
+			if (empty($sql) || strpos($sql, '--') === 0) {
+				continue;
+			}
+			$this->query($sql);
+		}
+		return true;
+	}
+	/**
 	 * 数据库查询
 	 */
 	public function query($sql){

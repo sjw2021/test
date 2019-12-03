@@ -10,7 +10,7 @@ try {
 	$lockFile = ROOT_PATH.'/db.lock';
 	if (!file_exists($lockFile)) {
 		$db = \package\Db::instance();
-		$res = $db->query(file_get_contents(ROOT_PATH.'/db.sql'));
+		$res = $db->executeSqlFile(file_get_contents(ROOT_PATH.'/db.sql'));
 		if ($res) {
 			file_put_contents($lockFile, '1');
 		}else{
