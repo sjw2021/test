@@ -31,11 +31,11 @@ class Index{
 		$size = intval($this->request->get('size',50));
 		$page = $page >= 1 ? $page : 1;
 
-		$db = \package\Db::instance();
-		$sql = "SELECT * FROM board ORDER BY Idate DESC";
-		$result = $db->query($sql);
+		// $db = \package\Db::instance();
+		// $sql = "SELECT * FROM board ORDER BY Idate DESC";
+		// $result = $db->query($sql);
 		$redis = \package\Redis::instance();
-		$redis->zadd($this->zsetKey);
+		// $redis->zadd($this->zsetKey);
 		$count = $redis->zcard($this->zsetKey);
 		$data = [
 			'page' => $page,
@@ -49,7 +49,7 @@ class Index{
 		// 分数倒序
 		$list = $redis->zrevrangebyscore($this->zsetKey,($page-1)*$size,$page*$size-1);
 		foreach ($list as $k => $v) {
-			$data['list'][] = $redis->hMGet($this->hashKey.':'.$v);
+			$data['list'][] = $redis->hGetAll($this->hashKey.':'.$v);
 		}
 		json($data);
 	}
