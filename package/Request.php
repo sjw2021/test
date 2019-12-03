@@ -24,24 +24,28 @@ class Request{
 	/**
 	 * 获取get参数
 	 */
-	public function get($param = ''){
-		if ($_GET && !$param) {
+	public function get($param = '',$default = null){
+		if (!$param) {
 			return $_GET;
 		}
-		if ($_GET && array_key_exists($param, $_GET)) {
+		if (array_key_exists($param, $_GET)) {
 			return $_GET[$param];
+		}else{
+			return $default;
 		}
 		return null;
 	}
 	/**
 	 * 获取post参数
 	 */
-	public function post($param = ''){
-		if ($_POST && !$param) {
+	public function post($param = '',$default = null){
+		if (!$param) {
 			return $_POST;
 		}
-		if ($_POST && array_key_exists($param, $_POST)) {
+		if (array_key_exists($param, $_POST)) {
 			return $_POST[$param];
+		}else{
+			return $default;
 		}
 		return null;
 	}

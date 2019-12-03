@@ -30,12 +30,8 @@ class Index{
 		$page = intval($this->request->get('page',1));
 		$size = intval($this->request->get('size',50));
 		$page = $page >= 1 ? $page : 1;
-
-		// $db = \package\Db::instance();
-		// $sql = "SELECT * FROM board ORDER BY Idate DESC";
-		// $result = $db->query($sql);
+		$count = 0;
 		$redis = \package\Redis::instance();
-		// $redis->zadd($this->zsetKey);
 		$count = $redis->zcard($this->zsetKey);
 		$data = [
 			'page' => $page,
@@ -43,7 +39,7 @@ class Index{
 			'max_page' => ceil($count/$size),
 			'list' => [],
 		];
-		if (ceil($count/$size) < $page) {
+		if ($data['max_page'] < $page) {
 			json($data);
 		}
 		// 分数倒序
